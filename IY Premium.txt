@@ -13357,11 +13357,12 @@ end)
 
 task.spawn(function()
     local c = 0
-    RunService.RenderStepped:Connect(function()
+    while task.wait(1/20) do
         Holder.BackgroundColor3 = Color3.fromHSV(c, 46, 47)
         c = c + 1/255
         if c >=1 then
             c=0
         end
-    end)
+    end
+
 end)

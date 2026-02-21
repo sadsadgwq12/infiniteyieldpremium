@@ -473,7 +473,7 @@ Prefix.Name = "Prefix"
 Prefix.Parent = SettingsHolder
 Prefix.BackgroundColor3 = Color3.fromRGB(46, 46, 47)
 Prefix.BorderSizePixel = 0
-Prefix.BackgroundTransparency = 1
+Prefix.BackgroundTransparency = 0
 Prefix.Position = UDim2.new(0, 5, 0, 5)
 Prefix.Size = UDim2.new(1, -10, 0, 20)
 Prefix.Font = Enum.Font.SourceSans
@@ -13359,9 +13359,10 @@ task.spawn(function()
 	for _, v in next, Holder:GetDescendants() do
 		    if v:IsA("Frame") or v:IsA("TextLabel") or v:IsA("TextBox") then
 		    RunService.RenderStepped:Connect(function()
-				v.BackgroundColor3 = Color3.fromHSV(tick() % 1.5 / 1.5, 1, 1)
+				v.BackgroundColor3 = Color3.fromHSV(tick() % 2, 1, 1)
 			end)
 	    end
 	end
 end)
+
 

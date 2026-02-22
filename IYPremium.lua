@@ -13348,8 +13348,8 @@ task.spawn(function()
 			print(i)
 			for _, v in next, fram do
 				v.BackgroundColor3 = color
-				task.wait()
 			end
+			task.wait()
 		end
 	end
 end)

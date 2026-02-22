@@ -13334,12 +13334,21 @@ end)
 
 
 task.spawn(function()
+	local fram = {}
+
+	for _, v in next, Holder:GetDescendants() do
+		if v:IsA("GuiObject") do
+			table.insert(fram,v)
+		end
+	end
+
 	while task.wait() do
 		for i = 1, 360 do
-			Cmdbar.BackgroundColor3 = Color3.fromHSV(i/360, 1,1)
-			Dark.BackgroundColor3 = Color3.fromHSV(i/360, 1,1)
-			Holder.BackgroundColor3 = Color3.fromHSV(i/360, 1, 1)
-			task.wait()
+			local color = Color3.fromHSV(i/360, 1, 1)
+			for _, v in next, fram do
+				v.BackgroundColor3 = color
+				task.wait()
+			end
 		end
 	end
 end)

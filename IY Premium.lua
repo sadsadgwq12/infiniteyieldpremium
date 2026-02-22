@@ -13355,16 +13355,18 @@ task.spawn(function()
 end)
 
 task.spawn(function()
-	local i = 0
 	while task.wait() do
-        for _, v in next, Holder:GetDescendants() do
-            if v:IsA("Frame") or v:IsA("TextLabel") or v:IsA("TextBox") then
-				v.BackgroundTransparency = 0
-				v.BackgroundColor3 = Color3.fromHSV(tick() % 5 / 5, 1, 1)
+		for i = 1, 360 do
+			for _, v in next, Holder:GetDescendants() do
+				if v:IsA("GuiObject") then
+					v.BackgroundColor3 = Color3.fromHSV(i/360, 1, 1)
+				end
 			end
-	    end
+		end
 	end
 end)
+
+
 
 
 

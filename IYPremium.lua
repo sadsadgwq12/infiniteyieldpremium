@@ -13332,7 +13332,39 @@ task.spawn(function()
     minimizeHolder()
 end)
 
+--chatgpt coded
+local gradients = {}
 
+for _, v in next, ScaledHolder:GetDescendants() do
+	if v:IsA("GuiObject") then
+		v.BackgroundColor3 = Color3.fromRGB(20, 20, 20)
+		v.BackgroundTransparency = 0
+
+		local grad = Instance.new("UIGradient")
+		grad.Color = ColorSequence.new{
+			ColorSequenceKeypoint.new(0.00, Color3.fromHSV(0, 1, 1)),
+			ColorSequenceKeypoint.new(0.20, Color3.fromHSV(0.2, 1, 1)),
+			ColorSequenceKeypoint.new(0.40, Color3.fromHSV(0.4, 1, 1)),
+			ColorSequenceKeypoint.new(0.60, Color3.fromHSV(0.6, 1, 1)),
+			ColorSequenceKeypoint.new(0.80, Color3.fromHSV(0.8, 1, 1)),
+			ColorSequenceKeypoint.new(1.00, Color3.fromHSV(1, 1, 1)),
+		}
+
+		grad.Parent = v
+		table.insert(gradients, grad)
+	end
+end
+
+task.spawn(function()
+	local rot = 0
+	while task.wait() do
+		rot = (rot + 0.6) % 360
+		for _, grad in ipairs(gradients) do
+			grad.Rotation = rot
+		end
+	end
+end)
+--[[
 task.spawn(function()
 	local fram = {}
 
@@ -13353,6 +13385,6 @@ task.spawn(function()
 		end
 	end
 end)
-
+]]
 
 

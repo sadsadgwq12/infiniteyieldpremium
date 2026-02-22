@@ -13355,4 +13355,4 @@ task.spawn(function()
 	end
 end)
 
-notify("Infinite Yield Premium loaded in "..tick()-p.." seconds")
+notify("Infinite Yield Premium loaded in "..string.format("%.1f",tick()-p).." seconds")
